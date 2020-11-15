@@ -1,0 +1,19 @@
+/*  Navbar */
+
+.navbar-myicon {
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.navbar-icon-title {
+    margin-left: 4px;
+}
+
+
+/* register form */
+
+.panel-primary {
+    width: 400px;
+    padding-top: 100px;
+    margin: auto;
+}
