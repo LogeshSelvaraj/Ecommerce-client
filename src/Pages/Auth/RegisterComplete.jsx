@@ -1,5 +1,6 @@
 import React from "react";
 import { useState,useEffect } from "react";
+import  "./RegisterComplete.css"
 import { auth } from "../../firebase";
 import { toast } from "react-toastify";
 
@@ -8,7 +9,7 @@ const RegisterComplete = () => {
   const [password,passState]=useState("")
 
   useState(()=>{
-      emailState(window.localStorage.getItem("emailForSignIN"))
+      emailState(window.localStorage.getItem("emailForSignIn"))
   },[])
 
   const handleChange=(e)=>{
@@ -20,10 +21,10 @@ const RegisterComplete = () => {
   }
 
   return (
-    <div className="firstPageregister">
+     <div className="SecondPageregister">
       <div className="container">
         <div className="row">
-          <div className="panel panel-primary">
+          <div className="panel panel-primary allignment-form2">
             <div className="panel-body">
               <form onSubmit={handleSubmit}>
                 <div className="form-group">
@@ -73,8 +74,8 @@ const RegisterComplete = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div> 
   );
-};
+}
 
 export default RegisterComplete;
