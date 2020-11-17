@@ -1,10 +1,16 @@
 import React from "react";
-import { useState } from "react";
+import { useState,useEffect } from "react";
+import { useSelector } from "react-redux";
 import { auth } from "../../firebase";
 import { toast } from "react-toastify";
 
-const Register = () => {
+const Register = ({history}) => {
+  const user = useSelector((state) => state.user);
   const [email, emailState] = useState("");
+
+  useEffect(() => {
+    if (user && user.token) history.push("/");
+  });
 
   const handleChange = (event) => {
     emailState(event.target.value);

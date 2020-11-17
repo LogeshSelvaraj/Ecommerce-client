@@ -1,27 +1,55 @@
 import React from "react";
-import { useState,useEffect } from "react";
-import  "./RegisterComplete.css"
+import { useState, useEffect } from "react";
+import "./RegisterComplete.css";
 import { auth } from "../../firebase";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
-const RegisterComplete = () => {
+const RegisterComplete = ({ history }) => {
   const [email, emailState] = useState("");
-  const [password,passState]=useState("")
+  const [password, passState] = useState("");
+  const user = useSelector((state) => state.user);
 
-  useState(()=>{
-      emailState(window.localStorage.getItem("emailForSignIn"))
-  },[])
+  useEffect(() => {
+    if (user && user.token) history.push("/");
+  });
 
-  const handleChange=(e)=>{
-      passState(e.target.value)
-  }
+  useEffect(() => {
+    emailState(window.localStorage.getItem("emailForSignIn"));
+  }, []);
 
-  const handleSubmit =()=>{
-      console.log(email,password)
-  }
+  const handleChange = (e) => {
+    passState(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    if (password.length < 6) {
+      toast.error("Please enter proper password");
+      return;
+    }
+
+    e.preventDefault();
+    try {
+      const result = await auth.signInWithEmailLink(
+        email,
+        window.location.href
+      );
+      console.log("Result", result);
+      if (result.user.emailVerified) {
+        const user = auth.currentUser;
+        await user.updatePassword(password);
+        const idTokenResult = await user.getIdTokenResult();
+
+        history.push("/");
+      }
+    } catch (err) {
+      console.log(err);
+      toast.error(err.message);
+    }
+  };
 
   return (
-     <div className="SecondPageregister">
+    <div className="SecondPageregister">
       <div className="container">
         <div className="row">
           <div className="panel panel-primary allignment-form2">
@@ -74,8 +102,8 @@ const RegisterComplete = () => {
           </div>
         </div>
       </div>
-    </div> 
+    </div>
   );
-}
+};
 
 export default RegisterComplete;
