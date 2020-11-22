@@ -35,7 +35,7 @@ const DropDown =() =>{
           aria-expanded="false"
         >
           <PersonOutlineIcon />
-          <span className="navbar-icon-title">{user.email.split("@")[0]}</span>
+          <span className="navbar-icon-title">{user.name}</span>
         </a>
         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a className="dropdown-item" href="#">

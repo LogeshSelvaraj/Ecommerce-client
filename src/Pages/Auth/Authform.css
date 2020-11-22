@@ -17,3 +17,9 @@
     padding: 0;
     text-align: center;
 }
+
+.allignment-form {
+    width: 400px;
+    padding-top: 100px;
+    margin: auto;
+}

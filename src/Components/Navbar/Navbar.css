@@ -1,0 +1,16 @@
+.navbar-icon-title {
+    color: white;
+}
+
+.coloring {
+    color: white;
+}
+
+.navbar-myicon {
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.navbar-icon-title {
+    margin-left: 4px;
+}

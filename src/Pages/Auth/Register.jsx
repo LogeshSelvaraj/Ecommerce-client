@@ -3,6 +3,7 @@ import { useState,useEffect } from "react";
 import { useSelector } from "react-redux";
 import { auth } from "../../firebase";
 import { toast } from "react-toastify";
+import "./Authform.css";
 
 const Register = ({history}) => {
   const user = useSelector((state) => state.user);

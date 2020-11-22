@@ -1,61 +1,98 @@
-import React,{useState,useEffect} from "react";
-import {auth,googleAuthProvider} from "../../firebase"
-import "./RegisterComplete.css";
-import {useDispatch} from "react-redux"
-import {toast} from "react-toastify"
-import CircularProgress from '@material-ui/core/CircularProgress';
-import {userState} from "../../Reducers/Actions/action"
+import React, { useState, useEffect } from "react";
+import { auth, googleAuthProvider } from "../../firebase";
+import "./Authform.css";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import { userState } from "../../Reducers/Actions/action";
+
 import { useSelector } from "react-redux";
+import { createOrUpdateUser } from "../../functions/Api";
 
 
 
 
 
-
-const Login = ({history}) => {
-  const dispatch=useDispatch()
+const Login = ({ history }) => {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const [email, emailState] = useState("");
   const [password, passState] = useState("");
-  const [loading,setLoading]=useState(false)
+  const [loading, setLoading] = useState(false);
+
+
+  const roleBasedRedirect = (role) => {
+    if (role === "admin") {
+      history.push("/admin/dashboard");
+    } else {
+      history.push("/user/history");
+    }
+  };
 
   useEffect(() => {
-    if (user && user.token) history.push("/");
+    if (user && user.token) roleBasedRedirect(user.role);
   });
 
-  async function handleSubmit(e){
-    e.preventDefault()
-    setLoading(true)
-    try{
-        const result = await auth.signInWithEmailAndPassword(email, password);
-        dispatch({
-          type: "LOGIN_USER",
-          payload: {
-            email: result.user.email,
-            token: result.user.getIdToken(),
-          },
-        });
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const result = await auth.signInWithEmailAndPassword(email, password);
+      const idToken = (await result.user.getIdTokenResult()).token;
 
-        history.push("/");
-    }catch(err){
-      setLoading(false)
-        toast.error(err.message)
-        console.log(err)
+      createOrUpdateUser(idToken)
+        .then((res) => {
+          console.log(res.data)
+          dispatch({
+            type: "LOGIN_USER",
+            payload: {
+              name: res.data.name,
+              email: res.data.email,
+              token: idToken,
+              role: res.data.role,
+              _id: res.data.id,
+            },
+          });
+          roleBasedRedirect(res.data.role)
+        })
+        .catch((err) => console.log(err));
+
+    } catch (err) {
+      setLoading(false);
+      toast.error(err.message);
+      console.log(err);
     }
-  
   }
 
-  async function googleLogin(e){
-      e.preventDefault()
-      auth.signInWithPopup(googleAuthProvider).then(async (result)=>{
-        const props = {
-          email: result.user.email,
-          token: result.user.refreshToken,
-        };
+  async function googleLogin(e) {
+    e.preventDefault();
+    auth
+      .signInWithPopup(googleAuthProvider)
+      .then(async (result) => {
+        const idToken = (await result.user.getIdTokenResult()).token;
+        
+      createOrUpdateUser(idToken)
+        .then((res) => {
+          dispatch({
+            type: "LOGIN_USER",
+            payload: {
+              name: res.data.name,
+              email: res.data.email,
+              token: idToken,
+              role: res.data.role,
+              _id: res.data.id,
+            },
+          });
+          roleBasedRedirect(res.data.role);
+        })
+        .catch((err) => console.log(err));
+        })
 
-        console.log(props)
+        // console.log(props);
 
-        dispatch(userState(props))
+        
+
+        // dispatch(userState(props));
 
         // dispatch({
         //   type:"LOGIN_USER",
@@ -64,22 +101,18 @@ const Login = ({history}) => {
         //     token:result.user.getIdToken()
         //   }
         // })
-        history.push("/")
-     }).catch((err)=>{
-       console.log(err)
-       toast.error(err.message)
-     })
-
+     
+      
+      .catch((err) => {
+        console.log(err);
+        toast.error(err.message);
+      });
   }
-
-
-
-
 
   return (
     <div>
       {loading && (
-        <div class="loading-animation">
+        <div className="loading-animation">
           <CircularProgress />
         </div>
       )}
@@ -100,6 +133,7 @@ const Login = ({history}) => {
                       id="signupEmail"
                       type="email"
                       maxLength="50"
+                      autoFocus
                       className="form-control"
                       onChange={(e) => {
                         emailState(e.target.value);
@@ -120,7 +154,6 @@ const Login = ({history}) => {
                         passState(e.target.value);
                       }}
                       value={password}
-                      autoFocus
                     ></input>
                   </div>
                   <div className="form-group">
@@ -136,15 +169,19 @@ const Login = ({history}) => {
                       Login with email
                     </button>
                   </div>
-                  <div class="form-group">
-                    <a class="btn btn-block btn-social btn-google" onClick={googleLogin}>
-                      <span class="fab fa-google"></span>
-                      <p class="oauth-button">Sign in with Google</p>
+                  <div className="form-group">
+                    <a
+                      className="btn btn-block btn-social btn-google"
+                      onClick={googleLogin}
+                    >
+                      <span className="fab fa-google"></span>
+                      <p className="oauth-button">Sign in with Google</p>
                     </a>
                   </div>
-                  
-                  <p >
-                   <a href="/forgot/password">Forgot password?</a> Not registered? <a href="/register">Sign up here</a>
+
+                  <p>
+                    <a href="/forgot/password">Forgot password?</a> Not
+                    registered? <a href="/register">Sign up here</a>
                   </p>
                 </form>
               </div>

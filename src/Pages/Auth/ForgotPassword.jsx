@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { auth } from "../../firebase";
 import { toast } from "react-toastify";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import "./RegisterComplete.css";
+import "./Authform.css";
 
 function ForgotPassword({ history }) {
   const user = useSelector((state) => state.user);
@@ -38,7 +38,7 @@ function ForgotPassword({ history }) {
   return (
     <div>
       {loading && (
-        <div class="loading-animation">
+        <div className="loading-animation">
           <CircularProgress />
         </div>
       )}

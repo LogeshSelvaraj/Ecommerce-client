@@ -9,23 +9,27 @@ const NavRightItems = () => {
   const user=useSelector((state)=> state.user)
   return (
     <ul className="navbar-nav ">
-      {!user &&
-      <>
-        <li className="nav-item">
-          <a className="nav-link navbar-myicon" href="/login">
-            <PersonIcon />
-            <span className="navbar-icon-title">Login</span>
-          </a>
-        </li>
-        <li className="nav-item ">
-          <a className="nav-link navbar-myicon" href="/register">
-            <PersonAddIcon />
-            <span className="navbar-icon-title"></span>
-            Register
-          </a>
-        </li>
-      </>
-       } {user && <DropDown /> }
+      {!user && (
+        <>
+          <li className="nav-item">
+            <a className="nav-link navbar-myicon" href="/login">
+              <span className="coloring">
+                <PersonIcon />
+                <span className="navbar-icon-title">Login</span>
+              </span>
+            </a>
+          </li>
+          <li className="nav-item ">
+            <a className="nav-link navbar-myicon" href="/register">
+              <span className="coloring">
+                <PersonAddIcon />
+                <span className="navbar-icon-title">Register</span>
+              </span>
+            </a>
+          </li>
+        </>
+      )}{" "}
+      {user && <DropDown />}
     </ul>
   );
 };

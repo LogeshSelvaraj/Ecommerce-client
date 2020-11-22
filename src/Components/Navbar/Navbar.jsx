@@ -1,6 +1,8 @@
 import React from "react";
 import NavBarLeftItems from "./NavLeftItems"
 import NavBarRightItems from "./NavRightItems"
+import "./Navbar.css"
+
 
 
 function Navbar() {
