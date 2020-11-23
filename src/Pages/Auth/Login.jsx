@@ -10,9 +10,6 @@ import { useSelector } from "react-redux";
 import { createOrUpdateUser } from "../../functions/Api";
 
 
-
-
-
 const Login = ({ history }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
@@ -24,8 +21,14 @@ const Login = ({ history }) => {
   const roleBasedRedirect = (role) => {
     if (role === "admin") {
       history.push("/admin/dashboard");
+        dispatch({
+          type: "LOGINAS_ADMIN",
+        });
     } else {
       history.push("/user/history");
+      dispatch({
+        type: "LOGINAS_USER",
+      });
     }
   };
 
@@ -42,7 +45,6 @@ const Login = ({ history }) => {
 
       createOrUpdateUser(idToken)
         .then((res) => {
-          console.log(res.data)
           dispatch({
             type: "LOGIN_USER",
             payload: {

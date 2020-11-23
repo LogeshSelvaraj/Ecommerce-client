@@ -7,3 +7,15 @@ export const userState=(props) =>{
         }
     })
 }
+
+export const userSidebarLinks=()=>{
+    return({
+        type:"LOGINAS_USER"
+    })
+}
+
+export const adminSidebarLinks = () => {
+  return {
+    type: "LOGINAS_ADMIN",
+  };
+};

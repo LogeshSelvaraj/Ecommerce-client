@@ -15,38 +15,55 @@ import MyOrders from "./Pages/User/MyOrders"
 import {auth} from "./firebase"
 import {useDispatch} from "react-redux"
 import {getUser} from "./functions/Api"
+import {UpdatingStates} from './functions/UpdatingStates'
 
 
 
 function App() {
 
-  const dispatch = useDispatch()
+      UpdatingStates();
 
-  useEffect( ()=>{
-    const unsubcribe=auth.onAuthStateChanged(async (user)=>{
-        if(user){
-          console.log((await user.getIdTokenResult()).token)
-          const idToken = (await user.getIdTokenResult()).token;
+  // const dispatch = useDispatch()
 
-    getUser(idToken)
-     .then((res) => {
-       dispatch({
-         type: "LOGIN_USER",
-         payload: {
-           name: res.data.name,
-           email: res.data.email,
-           token: idToken,
-           role: res.data.role,
-           _id: res.data.id,
-         },
-       });
-     })
-     .catch((err) => console.log(err));
 
-        }
-    })
-    return () => unsubcribe()
-  },[])
+  //   const roleBasedRedirect = (role) => {
+  //     if (role === "admin") {
+  //       dispatch({
+  //         type: "LOGINAS_ADMIN",
+  //       });
+  //     } else {
+  //       dispatch({
+  //         type: "LOGINAS_USER",
+  //       });
+  //     }
+  //   };
+
+  // useEffect( ()=>{
+  //   const unsubcribe=auth.onAuthStateChanged(async (user)=>{
+  //       if(user){
+  //         const idToken = (await user.getIdTokenResult()).token;
+  //   getUser(idToken)
+  //    .then((res) => {
+  //      roleBasedRedirect(res.data.role);
+  //      dispatch({
+  //        type: "LOGIN_USER",
+  //        payload: {
+  //          name: res.data.name,
+  //          email: res.data.email,
+  //          token: idToken,
+  //          role: res.data.role,
+  //          _id: res.data.id,
+  //        },
+  //      });
+       
+  //    })
+  //    .catch((err) => console.log(err));
+
+  //       }
+  //   })
+  //   return () => unsubcribe()
+  // },[])
+
 
   return (
     <>

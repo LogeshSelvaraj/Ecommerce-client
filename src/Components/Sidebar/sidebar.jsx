@@ -1,29 +1,20 @@
-import React from 'react'
-import {Nav,NavLink} from "react-bootstrap"
+import React from "react";
+import LinkItems from "./LinkItems";
+import { useSelector } from "react-redux";
+import "./sidebar.css";
 
-import "./sidebar.css"
+const Sidebar = () => {
+  const { sidebarLink } = useSelector((state) => ({ ...state }));
 
-const sidebar=()=>{
+  return (
+    <div id="admin-sidebar" className="col-lg-2 col-md-3">
+      <ul className="admin-sidenav list-unstyled">
+        {sidebarLink.map((props) => {
+          return <LinkItems linkpath={props.path} linkname={props.name} />;
+        })}
+      </ul>
+    </div>
+  );
+};
 
-    return (
-     
-          <div id="admin-sidebar" class="col-lg-2 col-md-3">
-            <ul class="sidenav admin-sidenav list-unstyled">
-              <li>
-                <a href="/mycart">My cart</a>
-              </li>
-              <li>
-                <a href="/whislist">Whilist</a>
-              </li>
-              <li>
-                <a href="/user/myorders">My Orders</a>
-              </li>
-              <li>
-                <a href="/user/myaccount">My account</a>
-              </li>
-            </ul>
-          </div>
-    )
-}
-
-export default sidebar
+export default Sidebar;
