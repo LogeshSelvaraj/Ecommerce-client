@@ -1,15 +1,32 @@
 import React from "react";
-import { Route, Link, Redirect } from "react-router-dom";
+import { Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import RouteRedirect from "./RouteRedirect"
+import {useHistory} from 'react-router-dom'
+import { useState,useEffect } from "react";
 
 const UserRoute =  ({ children, ...rest }) => {
+
+  const history=useHistory()
+
+  const [count,setCount]=useState(5)
+
+  useEffect(() => {
+  const interval=  setInterval(()=>{setCount((prev)=>--prev)},1000)
+    return () => {
+      clearInterval(interval)
+    }
+  }, [count])
+
   const { user } = useSelector((state) => ({ ...state }));
 
   return user && user.token ? (
-    <Route {...rest} render={() => children} />
+    <Route {...rest}  />
   ) : (
+    <>
    <RouteRedirect/>
+   {count===0&&history.push("/")}
+   </>
   );
   
 };

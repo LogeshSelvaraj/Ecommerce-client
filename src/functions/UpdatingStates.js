@@ -27,7 +27,7 @@ export const UpdatingStates = () => {
           const idToken = (await user.getIdTokenResult()).token;
           getUser(idToken)
             .then((res) => {
-              roleBasedSidebar(res.data.role);
+               roleBasedSidebar(res.data.role);
               dispatch({
                 type: "LOGIN_USER",
                 payload: {
@@ -38,6 +38,7 @@ export const UpdatingStates = () => {
                   _id: res.data.id,
                 },
               });
+             
             })
             .catch((err) => console.log(err));
         }

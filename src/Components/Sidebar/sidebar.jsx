@@ -9,8 +9,8 @@ const Sidebar = () => {
   return (
     <div id="admin-sidebar" className="col-lg-2 col-md-3">
       <ul className="admin-sidenav list-unstyled">
-        {sidebarLink.map((props) => {
-          return <LinkItems linkpath={props.path} linkname={props.name} />;
+        {sidebarLink.map((props,index) => {
+          return <LinkItems key={index} linkpath={props.path} linkname={props.name} />;
         })}
       </ul>
     </div>

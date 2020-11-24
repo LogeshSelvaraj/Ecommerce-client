@@ -11,10 +11,10 @@ import RegisterComplete from "./Pages/Auth/RegisterComplete"
 import UserHistory  from "./Pages/User/UserHistory.jsx"
 import UserRoute from "./Components/Routes/UserRoute"
 import MyOrders from "./Pages/User/MyOrders"
+import AdminRoute from './Components/Routes/AdminRoute'
+import AdminDashBoard from './Pages/Admin/AdminDashBoard'
 
-import {auth} from "./firebase"
-import {useDispatch} from "react-redux"
-import {getUser} from "./functions/Api"
+
 import {UpdatingStates} from './functions/UpdatingStates'
 
 
@@ -22,7 +22,7 @@ import {UpdatingStates} from './functions/UpdatingStates'
 function App() {
 
       UpdatingStates();
-      
+
   return (
     <>
       <NavBar />
@@ -35,6 +35,7 @@ function App() {
         <Route exact path="/forgot/password" component={ForgotPassword} />
         <UserRoute exact path="/user/history" component={UserHistory} />
         <UserRoute exact path="/user/myorders" component={MyOrders} />
+        <AdminRoute exact path="/admin/dashboard" component={AdminDashBoard}/>
       </Switch>
     </>
   );

@@ -15,3 +15,13 @@ export const getUser= async (token)=>{
     { headers: { token: token } }
   );
 }
+
+export const getAdmin = async (token) => {
+  return await axios.post(
+    `${process.env.REACT_APP_BACKEND_API_DOMAIN}/get-admin`,
+    {},
+    { headers: { token } }
+  );
+};
+
+

@@ -21,6 +21,7 @@ body {
 
 .admin-sidenav a {
     text-decoration: none;
+    text-align: left;
 }
 
 .admin-sidenav li {
@@ -38,7 +39,7 @@ body {
 }
 
 .admin-sidenav li a {
-    width: 100px;
+    width: 150px;
     color: white;
 }
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { auth, googleAuthProvider } from "../../firebase";
 import "./Authform.css";
+import "./bootstrap-social.css";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -44,7 +45,9 @@ const Login = ({ history }) => {
       const idToken = (await result.user.getIdTokenResult()).token;
 
       createOrUpdateUser(idToken)
+         
         .then((res) => {
+           console.log(res);
           dispatch({
             type: "LOGIN_USER",
             payload: {
