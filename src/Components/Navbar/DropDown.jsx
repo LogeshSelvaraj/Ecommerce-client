@@ -34,10 +34,13 @@ const DropDown =() =>{
           aria-haspopup="true"
           aria-expanded="false"
         >
+          <span className="coloring">
           <PersonOutlineIcon />
           <span className="navbar-icon-title">{user.name}</span>
+          </span>
+         
         </a>
-        <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <div className="dropdown-menu bg-0" aria-labelledby="navbarDropdownMenuLink">
           <a className="dropdown-item" href="#">
             Your Account
           </a>

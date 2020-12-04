@@ -13,11 +13,9 @@ import UserRoute from "./Components/Routes/UserRoute"
 import MyOrders from "./Pages/User/MyOrders"
 import AdminRoute from './Components/Routes/AdminRoute'
 import AdminDashBoard from './Pages/Admin/AdminDashBoard'
-
+import  Product from "./Pages/Admin/Product/Product"
 
 import {UpdatingStates} from './functions/UpdatingStates'
-
-
 
 function App() {
 
@@ -36,6 +34,7 @@ function App() {
         <UserRoute exact path="/user/history" component={UserHistory} />
         <UserRoute exact path="/user/myorders" component={MyOrders} />
         <AdminRoute exact path="/admin/dashboard" component={AdminDashBoard}/>
+          <AdminRoute exact path="/admin/product" component={Product}/>
       </Switch>
     </>
   );

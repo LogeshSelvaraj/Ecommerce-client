@@ -13,4 +13,14 @@
 
 .navbar-icon-title {
     margin-left: 4px;
+    /* color: white; */
+}
+
+.nav-item :hover {
+    background: linear-gradient(to right, #006a7b, #4d8ee4);
+}
+
+.dropdown a:hover {
+    background: none;
+    color: white;
 }

@@ -20,20 +20,23 @@ const UserLinks = [
 
 const AdminLinks = [
   {
-    name: "New Orders",
-    path: "/user/mycart",
+    name: "Orders",
+    path: "/admin/orders",
   },
   {
-    name: "Orders cancelled",
-    path: "/user/whislist",
+    name: "Category",
+    path: "/admin/category",
+  },{
+    name:"Sub Category",
+    path:"/admin/subcategory"
   },
   {
-    name: "Orders on progress",
-    path: "/user/myaccount",
+    name: "Products",
+    path: "/admin/products",
   },
   {
-    name: "Orders Delivered",
-    path: "/user/myorders",
+    name: "Coupons",
+    path: "/admin/coupons",
   },
 ];
 
