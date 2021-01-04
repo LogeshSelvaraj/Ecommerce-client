@@ -27,7 +27,7 @@ const DropDown =() =>{
       <li className="nav-item dropdown ">
         <a
           className={`nav-link dropdown-toggle navbar-myicon`}
-          href="#"
+          href="/"
           id="navbarDropdownMenuLink"
           role="button"
           data-toggle="dropdown"
@@ -41,13 +41,13 @@ const DropDown =() =>{
          
         </a>
         <div className="dropdown-menu bg-0" aria-labelledby="navbarDropdownMenuLink">
-          <a className="dropdown-item" href="#">
+          <a className="dropdown-item" href="/">
             Your Account
           </a>
-          <a className="dropdown-item" href="#">
+          <a className="dropdown-item" href="/">
             Your Orders
           </a>
-          <a className="dropdown-item" onClick={handleClick}>
+          <a className="dropdown-item" onClick={handleClick}  href="/">
             Log Out
           </a>
         </div>

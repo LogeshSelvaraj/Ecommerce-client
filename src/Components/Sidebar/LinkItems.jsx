@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 import {useHistory} from "react-router-dom"
 
 function LinkItems(props) {
@@ -11,7 +12,7 @@ function  handleClick(){
   return (
     <>
       <li onClick={handleClick}>
-        <a href={props.linkpath}>{props.linkname}</a>
+        <Link to={props.linkpath}>{props.linkname}</Link>
       </li>
     </>
   );

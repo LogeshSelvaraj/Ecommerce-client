@@ -5,7 +5,7 @@ import "./bootstrap-social.css";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { userState } from "../../Reducers/Actions/action";
+
 
 import { useSelector } from "react-redux";
 import { createOrUpdateUser } from "../../functions/Api";
@@ -177,7 +177,7 @@ const Login = ({ history }) => {
                   <div className="form-group">
                     <a
                       className="btn btn-block btn-social btn-google"
-                      onClick={googleLogin}
+                      onClick={googleLogin} 
                     >
                       <span className="fab fa-google"></span>
                       <p className="oauth-button">Sign in with Google</p>

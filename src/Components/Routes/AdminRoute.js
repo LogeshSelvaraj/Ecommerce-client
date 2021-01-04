@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route } from "react-router";
 import { useSelector } from "react-redux";
 import RouteRedirect from "./RouteRedirect";
 import { useState,useEffect } from "react";

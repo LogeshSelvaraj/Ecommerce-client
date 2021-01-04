@@ -1,5 +1,4 @@
 import {combineReducers} from "redux"
-import sidebar from "../Components/Sidebar/Sidebar";
 import userReducer from "./userReducer"
 import Sidebar from './Sidebar'
 

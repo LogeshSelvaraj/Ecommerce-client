@@ -16,7 +16,7 @@ const NavLeftItems =() =>{
           </a>
         </li>
         { user&&!user.role==="admin"&&<li className="nav-item  ">
-          <a className="nav-link navbar-myicon" href="#">
+          <a className="nav-link navbar-myicon" href="/">
           <span className="coloring">
           <CategoryIcon />
             <span className="navbar-icon-title">Categories</span>
