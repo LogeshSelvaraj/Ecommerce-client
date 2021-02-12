@@ -34,12 +34,9 @@ const RegisterComplete = ({ history }) => {
         email,
         window.location.href
       );
-      console.log("Result", result);
       if (result.user.emailVerified) {
         const user = auth.currentUser;
         await user.updatePassword(password);
-        const idTokenResult = await user.getIdTokenResult();
-
         history.push("/");
       }
     } catch (err) {
@@ -95,7 +92,7 @@ const RegisterComplete = ({ history }) => {
                   </button>
                 </div>
                 <p style={{ textAlign: "center" }}>
-                  Already have an account? <a href="#">Sign in</a>
+                  Already have an account? <a href="/login">Sign in</a>
                 </p>
               </form>
             </div>

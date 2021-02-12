@@ -175,13 +175,13 @@ const Login = ({ history }) => {
                     </button>
                   </div>
                   <div className="form-group">
-                    <a
+                    <i
                       className="btn btn-block btn-social btn-google"
                       onClick={googleLogin} 
                     >
                       <span className="fab fa-google"></span>
                       <p className="oauth-button">Sign in with Google</p>
-                    </a>
+                    </i>
                   </div>
 
                   <p>

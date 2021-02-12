@@ -3,7 +3,7 @@ import SubCategoryItem from "./SubCategoryItem"
 import {getSubs} from "../../../functions/SubCategory"
 import {getCategories} from "../../../functions/CategoryApi"
 
-const SubCategoryList = () => {
+const SubCategoryList = (props) => {
 
     const [list,setList]=useState([])
     const [parentList,setParentList]=useState([])
@@ -19,6 +19,7 @@ const SubCategoryList = () => {
             setList(res.data)
         })
     }
+
 
     const rerender=()=>{
         loadSubs()

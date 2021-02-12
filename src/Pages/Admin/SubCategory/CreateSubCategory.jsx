@@ -23,7 +23,7 @@ const CreateSubCategory = (props) => {
     getCategories().then((res) => {
       setList(res.data);
     });
-  }, []);
+  }, [checked]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,11 +32,10 @@ const CreateSubCategory = (props) => {
       .then((res) => {
         setname("");
         setChecked((prev) => !prev);
-        //   props.rerender()
+        setListCheck(prev=>!prev)
         toast.success(`${res.data.name} is created`);
       })
       .catch((err) => {
-        // toast.error(err)
         toast.error(err.response.data);
       });
   };

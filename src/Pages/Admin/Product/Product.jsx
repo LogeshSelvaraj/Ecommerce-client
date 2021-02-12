@@ -1,10 +1,21 @@
 import React from 'react'
+import Sidebar from '../../../Components/Sidebar/Sidebar';
+import CreateProducts from './CreateProducts';
+import MyProducts from './MyProducts'
+import "./Product.css"
+
 
 const Product = () => {
     return (
-        <div>
-        <h1>Product page</h1>
-        </div>
+        <div className="container-fluid ">
+        <div className="row">
+          <Sidebar />
+          <div className="col-lg-10 col-md-9">
+            <CreateProducts/>
+            <MyProducts/>
+           </div>
+         </div>
+       </div>
     )
 }
 

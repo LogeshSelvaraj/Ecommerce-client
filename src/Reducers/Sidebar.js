@@ -20,6 +20,10 @@ const UserLinks = [
 
 const AdminLinks = [
   {
+    name: "Dashboard",
+    path: "/admin/dashboard",
+  },
+  {
     name: "Orders",
     path: "/admin/orders",
   },

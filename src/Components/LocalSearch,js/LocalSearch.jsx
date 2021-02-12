@@ -11,7 +11,7 @@ const LocalSearch = ({keyword,setKeyword}) => {
 
     return (
         <div className="my-4  search-box ">
-      <input className="input-box" type="text" placeholder="search" value={keyword} onChange={handleChange}></input><span className="float-right"><SearchIcon/></span>
+      <input className="input-box text-center" type="text" placeholder="search" value={keyword} onChange={handleChange}></input><span className="float-right"><SearchIcon/></span>
       </div>
     )
 }

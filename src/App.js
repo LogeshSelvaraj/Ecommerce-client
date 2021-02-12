@@ -13,11 +13,12 @@ import UserHistory  from "./Pages/User/UserHistory.jsx"
 import UserRoute from "./Components/Routes/UserRoute"
 import MyOrders from "./Pages/User/MyOrders"
 import AdminRoute from './Components/Routes/AdminRoute'
-import AdminDashBoard from './Pages/Admin/AdminDashBoard'
+import AdminDashBoard from './Pages/Admin/Dashboard/AdminDashBoard'
 import Category from './Pages/Admin/Category/Category'
 import SubCategory from './Pages/Admin/SubCategory/SubCategory'
 
 import  Product from "./Pages/Admin/Product/Product"
+
 
 import {UpdatingStates} from './functions/UpdatingStates'
 
@@ -39,7 +40,7 @@ function App({history}) {
         <UserRoute exact path="/user/history" component={UserHistory} />
         <UserRoute exact path="/user/myorders" component={MyOrders} />
         <AdminRoute exact path="/admin/dashboard" component={AdminDashBoard}> </AdminRoute>
-        <AdminRoute exact path="/admin/products" component={Product}/>
+        <AdminRoute  path="/admin/products" component={Product} />
         <AdminRoute exact  path="/admin/category"
                component={Category}/>
         <AdminRoute exact  path="/admin/subcategory" component={SubCategory}/>
