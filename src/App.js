@@ -16,8 +16,8 @@ import AdminRoute from './Components/Routes/AdminRoute'
 import AdminDashBoard from './Pages/Admin/Dashboard/AdminDashBoard'
 import Category from './Pages/Admin/Category/Category'
 import SubCategory from './Pages/Admin/SubCategory/SubCategory'
-
-import  Product from "./Pages/Admin/Product/Product"
+import UpdatePage from './Pages/Admin/Product/UpdatePage'
+import  CreatePage from "./Pages/Admin/Product/CreatePage"
 
 
 import {UpdatingStates} from './functions/UpdatingStates'
@@ -40,10 +40,11 @@ function App({history}) {
         <UserRoute exact path="/user/history" component={UserHistory} />
         <UserRoute exact path="/user/myorders" component={MyOrders} />
         <AdminRoute exact path="/admin/dashboard" component={AdminDashBoard}> </AdminRoute>
-        <AdminRoute  path="/admin/products" component={Product} />
+        <AdminRoute  path="/admin/create-product" component={CreatePage} />
         <AdminRoute exact  path="/admin/category"
                component={Category}/>
         <AdminRoute exact  path="/admin/subcategory" component={SubCategory}/>
+        <AdminRoute exact  path="/admin/update-product/:id" component={UpdatePage}/>
       </Switch>
       </BrowserRouter>
     </>

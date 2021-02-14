@@ -45,7 +45,7 @@ const Specs = ({specs,SetSpecs}) => {
                   id={`name-${n}`}
                   onChange={handleSpecsChange}
                   value={specs[n].name}
-                  required
+                  required={n<4 ? true:false}
                 />
               </td>
               <td className="w-75">
@@ -54,6 +54,7 @@ const Specs = ({specs,SetSpecs}) => {
                   id={`detail-${n}`}
                   onChange={handleSpecsChange}
                   value={specs[n].detail}
+                  required={n<4 ? true:false}
                 />
               </td>
             </tr>

@@ -35,8 +35,8 @@ const AdminLinks = [
     path:"/admin/subcategory"
   },
   {
-    name: "Products",
-    path: "/admin/products",
+    name: "Create Product",
+    path: "/admin/create-product",
   },
   {
     name: "Coupons",

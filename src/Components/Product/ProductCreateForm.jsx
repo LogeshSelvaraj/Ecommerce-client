@@ -15,7 +15,9 @@ const ProductCreateForm = (
     description,
     price,
     stock,
-    brand
+    brand,
+    category,
+    subcategory
    }) => {
 
     return (
@@ -49,19 +51,21 @@ const ProductCreateForm = (
         </div>
         <div className="form-group">
           <label>Category</label>
-          <select className="form-control" id="category" onChange={handleChange} required>
-            <option value="">Select a Category</option>
-            {categories.map((c) => (
-              <option key={c.name} value={c._id}>{c.name}</option>
-            ))}
+          <select className="form-control" id="category" onChange={handleChange} required defaultValue={category}>
+           {! category && <option value="">Select a Category</option>}
+            {categories.map((c) => 
+             (
+              <option key={c.name} value={c._id} s>{c.name}</option>
+            )
+            )}
           </select>
         </div>
         <div className="form-group">
           <label>Sub Category</label>
-          <select className="form-control" id="subcategory" onChange={handleChange} required>
-            <option value="">Select a Sub Category</option>
+          <select className="form-control" id="subcategory" onChange={handleChange} required defaultValue={subcategory}>
+         { !subcategory && <option value="">Select a Sub Category</option>}   
             {subcategories.map((c) => (
-              <option key={c.name} value={c._id}>{c.name}</option>
+              <option key={c.name} value={c._id}>{c.name} </option>
             ))}
           </select>
         </div>

@@ -24,14 +24,14 @@ const NavLeftItems =() =>{
           </span>
           </a>
         </li> 
-        <li className="nav-item active ">
+      {  user&&user.role==="admin"&& <li className="nav-item active ">
           <a className="nav-link navbar-myicon" href="/admin/dashboard">
           <span className="coloring">
           <DashboardIcon />
             <span className="navbar-icon-title">Dashboard</span>
           </span>
           </a>
-        </li> 
+        </li> }
       </ul>
     );
 

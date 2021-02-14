@@ -41,12 +41,12 @@ const DropDown =() =>{
          
         </a>
         <div className="dropdown-menu bg-0" aria-labelledby="navbarDropdownMenuLink">
-          <a className="dropdown-item" href="/">
-            Your Account
+       {user&&user.role==="subscriber" && <>  <a className="dropdown-item" href="/user/history">
+            Your Profile
           </a>
           <a className="dropdown-item" href="/">
             Your Orders
-          </a>
+          </a></>}
           <a className="dropdown-item" onClick={handleClick}  href="/">
             Log Out
           </a>
