@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 
 const AdminRoute = ({ children, ...rest }) => {
   const history = useHistory();
+  const { user } = useSelector((state) => ({ ...state }));
 
   const [count, setCount] = useState(5);
 
@@ -19,7 +20,7 @@ const AdminRoute = ({ children, ...rest }) => {
     };
   }, [count]);
 
-  const { user } = useSelector((state) => ({ ...state }));
+  
 
     
   return user&&user.role === "admin" ? (

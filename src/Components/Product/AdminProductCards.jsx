@@ -1,4 +1,5 @@
 import React from "react";
+import AverageRating from '../Animations/AverageRating'
 import "./AdminProductCard.css";
 
 const AdminProductCard = ({ product,handleEdit,handleRemove }) => {
@@ -13,20 +14,13 @@ const AdminProductCard = ({ product,handleEdit,handleRemove }) => {
                   className="img-fluid img-responsive rounded product-image"
                   src={product.images[0] ? product.images[0].url : "/Images/24369860.jpg"}
                   alt="product"
-                style={  product.images[0] ? { height: "280px", width: "135px", margin: "10px 0 0 30px" } : {}}
+                style={  product.images[0] ? { height: "280px", width: "135px", margin: "10px 0 0 30px",objectFit:"contain" } : {}}
                 />
               </div>
               <div className="col-md-6 mt-1">
                 <h5>{product.title}</h5>
                 <div className="d-flex flex-row">
-                  <div className="ratings mr-2">
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                  </div>
-                  <span>310</span>
+                  <AverageRating ratings={product.ratings}/>
                 </div>
                 <div className="mt-1 mb-1 spec-1">
                   {product.specs.map((spec) => {

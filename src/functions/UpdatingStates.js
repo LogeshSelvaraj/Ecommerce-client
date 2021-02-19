@@ -1,5 +1,4 @@
-
-import {React,useEffect} from "react";
+import React,{useEffect} from "react";
 import {useDispatch} from 'react-redux'
 import {auth} from '../firebase'
 import { getUser } from "./Api";
@@ -35,7 +34,7 @@ export const UpdatingStates = () => {
                   email: res.data.email,
                   token: idToken,
                   role: res.data.role,
-                  _id: res.data.id,
+                  _id: res.data._id,
                 },
               });
              

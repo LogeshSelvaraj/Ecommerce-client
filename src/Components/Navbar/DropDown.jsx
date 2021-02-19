@@ -20,7 +20,7 @@ const DropDown =() =>{
           type:"LOGOUT_USER",
           payload:null
         })
-        history.push("/login")
+        history.push('/login')
     }
 
     return (
@@ -47,7 +47,7 @@ const DropDown =() =>{
           <a className="dropdown-item" href="/">
             Your Orders
           </a></>}
-          <a className="dropdown-item" onClick={handleClick}  href="/">
+          <a className="dropdown-item" onClick={handleClick} >
             Log Out
           </a>
         </div>

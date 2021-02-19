@@ -5,8 +5,6 @@ import "./bootstrap-social.css";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import CircularProgress from "@material-ui/core/CircularProgress";
-
-
 import { useSelector } from "react-redux";
 import { createOrUpdateUser } from "../../functions/Api";
 
@@ -20,13 +18,17 @@ const Login = ({ history }) => {
 
 
   const roleBasedRedirect = (role) => {
-    if (role === "admin") {
+    let intended=history.location.state
+    if(intended){
+      history.push((intended.from))
+    }
+  else  if (role === "admin") {
       history.push("/admin/dashboard");
         dispatch({
           type: "LOGINAS_ADMIN",
         });
     } else {
-      history.push("/user/history");
+      history.push("/");
       dispatch({
         type: "LOGINAS_USER",
       });
@@ -34,8 +36,13 @@ const Login = ({ history }) => {
   };
 
   useEffect(() => {
-    if (user && user.token) roleBasedRedirect(user.role);
-  });
+    // let intended=history.location.state
+    // if(intended){
+    //   return;
+    // }else{
+      if (user && user.token) roleBasedRedirect(user.role);
+    // }
+  },[user]);
 
   async function handleSubmit(e) {
     e.preventDefault();

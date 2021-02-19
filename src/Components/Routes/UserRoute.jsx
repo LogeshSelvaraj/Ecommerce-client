@@ -6,7 +6,7 @@ import {useHistory} from 'react-router-dom'
 import { useState,useEffect } from "react";
 
 const UserRoute =  ({ children, ...rest }) => {
-
+  const { user } = useSelector((state) => ({ ...state }));
   const history=useHistory()
 
   const [count,setCount]=useState(5)
@@ -18,7 +18,7 @@ const UserRoute =  ({ children, ...rest }) => {
     }
   }, [count])
 
-  const { user } = useSelector((state) => ({ ...state }));
+ 
 
   return user && user.token ? (
     <Route {...rest}  />

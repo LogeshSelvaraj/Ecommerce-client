@@ -1,6 +1,6 @@
 import React from "react";
 import {Switch,Route} from "react-router";
-import {BrowserRouter} from "react-router-dom"
+
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Login from "./Pages/Auth/Login"
@@ -18,6 +18,8 @@ import Category from './Pages/Admin/Category/Category'
 import SubCategory from './Pages/Admin/SubCategory/SubCategory'
 import UpdatePage from './Pages/Admin/Product/UpdatePage'
 import  CreatePage from "./Pages/Admin/Product/CreatePage"
+import SingleProduct from "./Components/Product/SingleProduct"
+import Favicon from 'react-favicon';
 
 
 import {UpdatingStates} from './functions/UpdatingStates'
@@ -28,15 +30,17 @@ function App({history}) {
 
   return (
     <>
+     <Favicon url="https://res.cloudinary.com/logeshksr99/image/upload/v1613403260/icons8-shopping-bag-30_ogwexq.png"/>
       <NavBar />
       <ToastContainer />
-      <BrowserRouter history={history}>
+      
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/register/complete" component={RegisterComplete} />
         <Route exact path="/forgot/password" component={ForgotPassword} />
+        <Route exact path="/product/:id" component={SingleProduct} />
         <UserRoute exact path="/user/history" component={UserHistory} />
         <UserRoute exact path="/user/myorders" component={MyOrders} />
         <AdminRoute exact path="/admin/dashboard" component={AdminDashBoard}> </AdminRoute>
@@ -46,7 +50,6 @@ function App({history}) {
         <AdminRoute exact  path="/admin/subcategory" component={SubCategory}/>
         <AdminRoute exact  path="/admin/update-product/:id" component={UpdatePage}/>
       </Switch>
-      </BrowserRouter>
     </>
   );
    
