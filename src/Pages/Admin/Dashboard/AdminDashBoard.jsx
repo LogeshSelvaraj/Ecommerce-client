@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Sidebar from "../../../Components/Sidebar/Sidebar";
+import Sidebar from "../../../Components/Sidebarf/Sidebar";
 import AdminProductCard from "../../../Components/Product/AdminProductCards";
 import { getProducts,remove } from "../../../functions/ProductApi";
 import { CircularProgress } from "@material-ui/core";

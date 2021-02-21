@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Sidebar from '../../../Components/Sidebar/Sidebar';
+import Sidebar from '../../../Components/Sidebarf/Sidebar';
 import UpdateProduct from './UpdateProduct'
 
 
